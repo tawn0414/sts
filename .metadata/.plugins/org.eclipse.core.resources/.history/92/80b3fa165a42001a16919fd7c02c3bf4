@@ -1,0 +1,18 @@
+package member;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
+public class SearchController{
+
+	@Override
+	public ModelAndView search() {
+		String search = req.getParameter("search");
+		System.out.println("�˻���:"+search);
+		return new ModelAndView("/WEB-INF/test/index.jsp");
+	}
+
+}
