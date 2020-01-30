@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	
+	<!-- board관련 작업을 하기 위해 필요한 뷰만 등록 -->
+	<definition name="menu/board" extends="mainTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/board_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/board/boardlist.jsp"></put-attribute>
+	</definition>
+	
+</tiles-definitions>
