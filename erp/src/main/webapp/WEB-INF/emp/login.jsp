@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <%
 	Cookie[] cookies = request.getCookies();
@@ -18,7 +18,7 @@
 %>
 </head>
 <body>
-	<form name="login_frm" action="/erp/login.do" method="post">
+	<form name="login_frm" action="/erp/emp/login.do" method="post">
 		<table cellpadding="0" cellspacing=5 width="815" bgcolor=#f3f3f3
 			border=0>
 			<tr>
@@ -45,12 +45,12 @@
 
 																		<tr>
 																			<td colspan=3><img
-																				src="/erp/resources/images/page_login.gif"></td>
+																				src="/erp/images/page_login.gif"></td>
 																		</tr>
 																		<tr>
 																			<td height=25></td>
 																		</tr>
-																		<tr>
+																		<tr><!-- type이 images면 text도 쓰기 가능 -->
 																			<td background="/erp/images/inputBg.gif"><img
 																				src="/erp/images/login_id.gif"></td>
 																			<td background="/erp/images/inputBg.gif"><input

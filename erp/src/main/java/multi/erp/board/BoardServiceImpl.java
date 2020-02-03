@@ -13,8 +13,16 @@ public class BoardServiceImpl implements BoardService {
 	BoardDAO dao;
 	
 	@Override
-	public List<BoardVO> boardList() {
-		return dao.boardList();
+	public List<BoardVO> boardList(String category) {
+		List<BoardVO> list = null;
+		if (category!=null) {
+			if(category.equals("all")) {
+				list = dao.boardList();
+			}else {
+				list = dao.categorySearch(category);
+			}
+		}
+		return list;
 	}
 
 	@Override
@@ -34,7 +42,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<BoardVO> searchList(String tag, String search) {
-		return null;
+		return dao.searchList(tag, search);
 	}
 
 	@Override
@@ -63,3 +71,5 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 }
+
+

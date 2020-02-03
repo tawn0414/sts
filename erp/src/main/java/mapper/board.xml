@@ -7,7 +7,40 @@
 	<select id="listall" resultType="board">
 		select * from board
 	</select>
+	
+	<select id="categorySearch" resultType="board" parameterType="String">
+	<!-- resultType에 쓴 board는 BoardVO, 문자열 하나가 넘어올꺼니까 parameterType은 String-->
+		select * from board where category = #{category}
+	</select>
+	
 	<insert id="insert" parameterType="board">
 		insert into board values(board_seq.nextval,'jang',#{title},#{content},sysdate,#{category},0)
 	</insert>
+	
+	<select id="dynamicSearch" resultType="board" parameterType="Map">
+	<!-- key,value한쌍으로 넘어가도록 parameterType을 Map으로 해줌. -->
+		select * from board
+		<where>
+			<!-- tag가 title이고 search에 뭔가 값이 있으면 아래의 문장을 where로 실행시키겠다는 말. 
+				title, id, content, write_date는 boardlist.jsp의 맨 아래에 있는 id들
+			-->
+			<if test="tag=='title'and search!=''">
+				<!-- title에 #{search} 내용이 들어간 모든 것 -->
+				title like '%' || #{search} || '%' 
+			</if>
+			<if test="tag=='id'and search!=''">
+				id like '%' || #{search} || '%'
+			</if>
+			<if test="tag=='content'and search!=''">
+				content like '%' || #{search} || '%'
+			</if>
+			<if test="tag=='write_date'and search!=''">
+				<!-- 입력한 날짜 이전에 보인것들도 다 보이도록 해보자 -->
+				<!-- [CDATA[sql문]]=> sql문안에 기호가 있어도 문자열로 인식시키겠다는 말. 여기에서는 꺽쇠(<)-->
+				<![CDATA[
+				to_date(write_date) <= #{search}
+				]]>
+			</if>
+		</where>
+	</select>
 </mapper>

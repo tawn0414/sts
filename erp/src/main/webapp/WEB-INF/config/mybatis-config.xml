@@ -2,11 +2,15 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
 	<typeAliases>
 		<typeAlias type="multi.erp.board.BoardVO" alias="board"/>
+		<typeAlias type="multi.erp.emp.MemberVO" alias="emp"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/board.xml"/>
+		<mapper resource="mapper/emp.xml"/>
 	</mappers>
+
 </configuration> 

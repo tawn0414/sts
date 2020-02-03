@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="multi.erp.emp">
+ 	<!-- 여기서는 loginUser에 담긴 id와 password가  parameterType으로 넘어옴.-->
+ 	<select id="login" resultType="emp" parameterType="emp">
+ 	<!-- 레코드 하나가 emp랑 매치되어야 하니까 resultType : emp(내가 입력한 결과), VO타입으로 하려고 parameterType="emp" 
+ 		타입이 여러개니까 VO타입을 정해주면 모든 타입을 다 품을 수 있음. 그래서 emp를 parameterType으로 쓴거임.-->
+ 		select m.* ,d.deptname, j.menupath, j.job_category 
+ 		from member m, dept d, job j 
+ 		where m.deptno = d.deptno and d.job_category = j.job_id and id = #{id} and pass = #{pass}
+ 	</select>
+ </mapper>
